@@ -1,5 +1,4 @@
 import "./App.css";
-import List from "./components/Navigation";
 import { Navigation } from "./components/Navigation";
 
 function App() {
