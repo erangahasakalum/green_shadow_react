@@ -1,11 +1,10 @@
 import "./App.css";
-import { Navigation } from "./components/Navigation";
-
 function App() {
   return (
     <>
-      <h1>hi</h1>
-      <Navigation/>
+    <h1 className="text-5xl font-bold underline">
+    Hello world!
+  </h1>
     </>
   );
 }
