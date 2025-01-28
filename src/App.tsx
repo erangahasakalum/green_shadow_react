@@ -1,10 +1,9 @@
 import "./App.css";
+import RootLayout from "./components/RootLayout";
 function App() {
   return (
     <>
-    <h1 className="text-5xl font-bold underline">
-    Hello world!
-  </h1>
+      <RootLayout/>
     </>
   );
 }
