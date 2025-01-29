@@ -6,7 +6,7 @@ import {
 import { Button, Layout, Menu, theme } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSeedling, faFileAlt,faTractor , faCogs, faUsers, faTruck, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Outlet } from 'react-router-dom';
+import { Outlet ,useNavigate} from 'react-router-dom';
 
 
 const { Header, Sider, Content } = Layout;
@@ -16,6 +16,7 @@ const RootLayout: React.FC = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const navigate = useNavigate();
 
   return (
     <Layout>
@@ -24,46 +25,47 @@ const RootLayout: React.FC = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['/']}
+          onClick={({key}) => navigate(key)}
           items={[
             {
-              key: '1',
+              key: '/',
               icon: <FontAwesomeIcon icon={faHome} />,
               label: 'DashBoard',
             },
             {
-              key: '2',
+              key: '/crop',
               icon:   <FontAwesomeIcon icon={faSeedling} />,
               label: 'Crops',
             },
             {
-              key: '3',
+              key: '/field',
               icon: <FontAwesomeIcon icon={faTractor} />,
               label: 'Fields',
              
             },
             {
-                key: '4',
+                key: '/log',
                 icon:<FontAwesomeIcon icon={faFileAlt} />,
                 label: 'Logs',
               },
               {
-                key: '5',
+                key: '/equipment',
                 icon: <FontAwesomeIcon icon={faCogs} />,
                 label: 'Equipment',
               },
               {
-                key: '6',
+                key: '/staff',
                 icon: <FontAwesomeIcon icon={faUsers} />,
                 label: 'Staff',
               },
               {
-                key: '7',
+                key: '/vehicle',
                 icon: <FontAwesomeIcon icon={faTruck} />,
                 label: 'Vehicles',
               },
               {
-                key: '8',
+                key: '/user',
                 icon:  <FontAwesomeIcon icon={faUser} />,
                 label: 'Users',
               },
@@ -91,8 +93,6 @@ const RootLayout: React.FC = () => {
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}
-
-          
         >
           <Outlet/>
         </Content>
