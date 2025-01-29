@@ -6,6 +6,7 @@ import {
 import { Button, Layout, Menu, theme } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSeedling, faFileAlt,faTractor , faCogs, faUsers, faTruck, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Outlet } from 'react-router-dom';
 
 
 const { Header, Sider, Content } = Layout;
@@ -39,6 +40,7 @@ const RootLayout: React.FC = () => {
               key: '3',
               icon: <FontAwesomeIcon icon={faTractor} />,
               label: 'Fields',
+             
             },
             {
                 key: '4',
@@ -89,8 +91,10 @@ const RootLayout: React.FC = () => {
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
           }}
+
+          
         >
-          Content
+          <Outlet/>
         </Content>
       </Layout>
     </Layout>
