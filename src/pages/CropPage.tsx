@@ -1,7 +1,9 @@
+
 export function CropPage(){
     return(
         <>
-        <h1>crop</h1>
+        <h1>Crops Details</h1>
+        
         </>
     )
     
