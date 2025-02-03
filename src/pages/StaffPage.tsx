@@ -1,14 +1,16 @@
-import ButtonComponents from "../components/ButtonComponents";
-import TableComponents from "../components/TableComponent";
+import ButtonComponents from "../components/button/ButtonComponents";
+import TableComponents from "../components/table/TableComponent";
 
 export function StaffPage(){
     return(
         <>
         <div>
-              <h1>staff</h1>
-              <ButtonComponents/>
+            <h1>Staff</h1>
+            <ButtonComponents/>
         </div>
-        <TableComponents/>
+        <div>
+            <TableComponents/>
+        </div>
         </>
     )
 }
