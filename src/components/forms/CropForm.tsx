@@ -5,14 +5,10 @@ import { UploadOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
 const CropForm: React.FC = () => {
-    const handleFinish = (values: any) => {
-        console.log('Form Submitted: ', values);
-    };
-
     return (
         <Form
             layout="vertical"
-            onFinish={handleFinish}
+
         >
             {/* Crop Name & Scientific Name */}
             <Row gutter={16}>
