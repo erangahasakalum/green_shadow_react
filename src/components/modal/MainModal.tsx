@@ -5,9 +5,10 @@ interface ModalProps {
     open:boolean;
     setOpen:React.Dispatch<React.SetStateAction<boolean>>;
     children: React.ReactNode;
+    title:string;
   }
   
-const MainModal: React.FC<ModalProps> = ({children,setOpen,open}) => {
+const MainModal: React.FC<ModalProps> = ({children,setOpen,open,title}) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   
   const handleOk = () => {
@@ -26,7 +27,7 @@ const MainModal: React.FC<ModalProps> = ({children,setOpen,open}) => {
   return (
     <>
       <Modal
-        title="Title"
+        title={title}
         open={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}

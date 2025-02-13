@@ -6,9 +6,11 @@ import TableComponents from "../components/table/TableComponent";
 export function CropPage(){
     
     const [open,setOpen] = useState(false);
+    const [title,setModalTitle] = useState("");
 
     function openAddModal(){
-        setOpen(true)    
+        setModalTitle("Add New Crop");
+        setOpen(true);    
     }
     return(
         <>
@@ -18,7 +20,7 @@ export function CropPage(){
         <Button type="primary" onClick={() => openAddModal()}>
           Add Crop
         </Button>
-        <MainModal open={open} setOpen={setOpen}>
+        <MainModal open={open} setOpen={setOpen} title={title}>
           {/* Pass StaffForm inside the modal */}
           <CropForm />
         </MainModal>
