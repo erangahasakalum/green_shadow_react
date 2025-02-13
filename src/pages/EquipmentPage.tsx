@@ -6,8 +6,10 @@ import TableComponents from "../components/table/TableComponent";
 
 export function Equipmentpage(){
     const [open,setOpen] =useState(false);
+    const [title,setTitle] = useState("");
 
     function openModal(){
+        setTitle("Add new Equipment")
         setOpen(true)
     }
     return(
@@ -15,7 +17,7 @@ export function Equipmentpage(){
         <div>
         <h1>Equipment</h1>
         <Button type="primary" onClick={()=> openModal()}>Add Equipment</Button>
-        <MainModal open={open} setOpen={setOpen}>
+        <MainModal open={open} setOpen={setOpen} title={title}>
             <EquipmentForm/>
         </MainModal>
         </div>
