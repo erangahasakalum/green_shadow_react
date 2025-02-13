@@ -8,8 +8,10 @@ import MainModal from "../components/modal/MainModal";
 export function FieldPage(){
 
     const [open,setOpen] = useState(false);
+    const [title,setTitle] = useState("");
 
     function openModal(){
+        setTitle("Add New Field");
         setOpen(true)
     }
     return(
@@ -17,7 +19,7 @@ export function FieldPage(){
             <div>
                 <h1>field</h1>
                 <Button type="primary" onClick={openModal}>Add Field</Button> 
-                <MainModal open={open} setOpen={setOpen}>
+                <MainModal open={open} setOpen={setOpen} title={title}>
                    <FieldForm />
                  </MainModal>    
             </div>
