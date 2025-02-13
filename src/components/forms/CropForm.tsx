@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Select, Button, Row, Col, Upload } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
 const CropForm: React.FC = () => {
+
+    const [cropName ,setCropName] = useState("");
+    const [scientificName ,setScientificName] = useState("");
+    const [cropCategory ,setCropCategory] = useState("");
+    const [cropSeason ,setCropSeason] = useState("");
+    const [cropFields ,setCropFields] = useState("");
+    const [cropImage ,setCropImage] = useState("");
+
+    console.log(cropName,scientificName,cropCategory,cropSeason)
+    console.log(setCropName,setScientificName,setCropCategory,setCropSeason)
     return (
         <Form
             layout="vertical"
+            requiredMark= {false}
 
         >
             {/* Crop Name & Scientific Name */}
@@ -18,7 +29,8 @@ const CropForm: React.FC = () => {
                         name="cropName"
                         rules={[{ required: true, message: "Please enter the crop name!" }]}
                     >
-                        <Input placeholder="Enter crop name" />
+                        <Input placeholder="Enter crop name"  value={cropName} onChange={(e)=>setCropName(e.target.value)}/>
+                        
                     </Form.Item>
                 </Col>
                 <Col span={12}>
@@ -27,7 +39,7 @@ const CropForm: React.FC = () => {
                         name="scientificName"
                         rules={[{ required: true, message: "Please enter the scientific name!" }]}
                     >
-                        <Input placeholder="Enter scientific name" />
+                        <Input placeholder="Enter scientific name" value={scientificName} onChange={(e)=>setScientificName(e.target.value)} />
                     </Form.Item>
                 </Col>
             </Row>
@@ -40,7 +52,7 @@ const CropForm: React.FC = () => {
                         name="category"
                         rules={[{ required: true, message: "Please enter the crop category!" }]}
                     >
-                        <Input placeholder="Enter crop category" />
+                        <Input placeholder="Enter crop category"  value={cropCategory} onChange={(e)=>setCropCategory(e.target.value)}/>
                     </Form.Item>
                 </Col>
                 <Col span={12}>
@@ -49,7 +61,7 @@ const CropForm: React.FC = () => {
                         name="season"
                         rules={[{ required: true, message: "Please enter the growing season!" }]}
                     >
-                        <Input placeholder="Enter growing season" />
+                        <Input placeholder="Enter growing season" value={cropSeason} onChange={(e)=>setCropSeason(e.target.value)}/>
                     </Form.Item>
                 </Col>
             </Row>
@@ -75,13 +87,6 @@ const CropForm: React.FC = () => {
                     </Form.Item>
                 </Col>
             </Row>
-
-            {/* Submit Button */}
-            <Form.Item>
-                <Button type="primary" htmlType="submit">
-                    Submit Crop Details
-                </Button>
-            </Form.Item>
         </Form>
     );
 };
