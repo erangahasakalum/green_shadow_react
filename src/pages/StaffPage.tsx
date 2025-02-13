@@ -6,9 +6,10 @@ import StaffForm from "../components/forms/StaffForm";
 
 export function StaffPage() {
   const [open, setOpen] = useState(false);
-  
+  const [title,setTitle] = useState("");
 
   function openAddModal() {
+    setTitle("Add new Staff")
     setOpen(true);
   }
 
@@ -19,7 +20,7 @@ export function StaffPage() {
         <Button type="primary" onClick={() => openAddModal()}>
           Add Staff
         </Button>
-        <MainModal open={open} setOpen={setOpen}>
+        <MainModal open={open} setOpen={setOpen} title={title}>
           {/* Pass StaffForm inside the modal */}
           <StaffForm />
         </MainModal>
