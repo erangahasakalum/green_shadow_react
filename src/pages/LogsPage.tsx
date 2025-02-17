@@ -1,5 +1,4 @@
 import { Button } from "antd";
-import TableComponents from "../components/table/TableComponent";
 
 export function LogsPage(){
     return(
@@ -10,7 +9,7 @@ export function LogsPage(){
         </div>
 
         <div>
-            <TableComponents/>
+            
         </div>
         </>
     )
