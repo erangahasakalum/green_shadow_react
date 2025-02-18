@@ -5,3 +5,5 @@ export const store = configureStore({
         crops:CropSlice
     }
 })
+
+export type AppDispatch = typeof store.dispatch;
