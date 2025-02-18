@@ -17,7 +17,6 @@ export function VehiclePage() {
 
   const handleOk = () => {
     setConfirmLoading(true);
-    // Simulate a request or some action here
     setTimeout(() => {
       setOpen(false);
       setConfirmLoading(false);

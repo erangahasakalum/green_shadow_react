@@ -1,4 +1,14 @@
-import { Button, Modal, Row, Col, Form, Input, Select, Upload, Table } from "antd";
+import {
+  Button,
+  Modal,
+  Row,
+  Col,
+  Form,
+  Input,
+  Select,
+  Upload,
+  Table,
+} from "antd";
 import { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 
@@ -15,8 +25,8 @@ export function CropPage() {
   const [scientificName, setScientificName] = useState("");
   const [cropCategory, setCropCategory] = useState("");
   const [cropSeason, setCropSeason] = useState("");
-  const [fieldList,setFieldList] =useState([]);
-  const [fileList,setFileList] = useState([]);
+  const [fieldList, setFieldList] = useState([]);
+  const [fileList, setFileList] = useState([]);
 
   // Modal Handlers
   const openAddModal = () => {
@@ -126,7 +136,7 @@ export function CropPage() {
                 </Form.Item>
               </Col>
             </Row>
-            
+
             {/* field value */}
             <Row gutter={16}>
               <Col span={12}>
@@ -134,17 +144,17 @@ export function CropPage() {
                   <Button type="primary" style={{ marginBottom: "10px" }}>
                     Add Fields
                   </Button>
-                  <Select placeholder="Select Field" >
+                  <Select placeholder="Select Field">
                     <Option value="field1">Field 1</Option>
                     <Option value="field2">Field 2</Option>
                   </Select>
                 </Form.Item>
               </Col>
 
-            {/* Crops & Image Upload */}
+              {/* Crops & Image Upload */}
               <Col span={12}>
                 <Form.Item label="Crop Image (URL or File)">
-                  <Upload name="file" listType="picture" maxCount={1} >
+                  <Upload name="file" listType="picture" maxCount={1}>
                     <Button icon={<UploadOutlined />}>Upload (File)</Button>
                   </Upload>
                 </Form.Item>
@@ -155,7 +165,7 @@ export function CropPage() {
       </div>
 
       <div>
-          <Table/>
+        <Table />
       </div>
     </>
   );

@@ -1,7 +1,6 @@
 import { Button, Modal, Row, Col, Form, Input, Select, Table } from "antd";
 import { useState } from "react";
 
-
 const { Option } = Select;
 
 export function Equipmentpage() {
@@ -50,7 +49,12 @@ export function Equipmentpage() {
                 <Form.Item
                   label="Equipment Name"
                   name="equipmentName"
-                  rules={[{ required: true, message: "Please input the equipment name!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input the equipment name!",
+                    },
+                  ]}
                 >
                   <Input placeholder="Equipment Name" />
                 </Form.Item>
@@ -61,7 +65,12 @@ export function Equipmentpage() {
                 <Form.Item
                   label="Type"
                   name="equipmentType"
-                  rules={[{ required: true, message: "Please select the equipment type!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please select the equipment type!",
+                    },
+                  ]}
                 >
                   <Select placeholder="Select Equipment Type">
                     <Option value="TRACTOR">Tractor</Option>
@@ -79,7 +88,9 @@ export function Equipmentpage() {
                 <Form.Item
                   label="Status"
                   name="status"
-                  rules={[{ required: true, message: "Please select the status!" }]}
+                  rules={[
+                    { required: true, message: "Please select the status!" },
+                  ]}
                 >
                   <Select placeholder="Select Status">
                     <Option value="ACTIVE">Active</Option>
@@ -93,7 +104,12 @@ export function Equipmentpage() {
                 <Form.Item
                   label="Available Count"
                   name="availableCount"
-                  rules={[{ required: true, message: "Please input the available count!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input the available count!",
+                    },
+                  ]}
                 >
                   <Input placeholder="Available Count" />
                 </Form.Item>
@@ -132,10 +148,7 @@ export function Equipmentpage() {
               <Button type="primary" htmlType="submit">
                 Save Equipment Details
               </Button>
-              <Button
-                style={{ marginLeft: "10px" }}
-                onClick={handleCancel}
-              >
+              <Button style={{ marginLeft: "10px" }} onClick={handleCancel}>
                 Close
               </Button>
             </Form.Item>
@@ -143,7 +156,7 @@ export function Equipmentpage() {
         </Modal>
       </div>
       <div>
-        <Table/>
+        <Table />
       </div>
     </>
   );
