@@ -1,8 +1,17 @@
-import { Button, Modal, Row, Col, Form, Input, Select, Upload, Card,Tag } from "antd";
+import {
+  Button,
+  Modal,
+  Row,
+  Col,
+  Form,
+  Input,
+  Select,
+  Upload,
+  Card,
+  Tag,
+} from "antd";
 import { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
-
-const { Option } = Select;
 
 export function FieldPage() {
   // Modal state and handlers
@@ -10,7 +19,15 @@ export function FieldPage() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [title] = useState("Add Field");
 
-
+  const { Option } = Select;
+  const [fieldName, setFieldName] = useState("");
+  const [fieldLocation, setFieldLocation] = useState("");
+  const [extendSize, setExtendSize] = useState("");
+  const [staffList, setStaffList] = useState([]);
+  const [cropList, setCropList] = useState([]);
+  const [filedImage, setFieldImage] = useState("");
+  const [logList, setLogList] = useState([]);
+  const [equipmentList, setEquipmentList] = useState([]);
 
   // Modal Handlers
   const openAddModal = () => {
@@ -30,8 +47,6 @@ export function FieldPage() {
     setOpen(false);
   };
 
-
-
   return (
     <>
       <div>
@@ -47,117 +62,139 @@ export function FieldPage() {
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
         >
-<Form layout="vertical" requiredMark={false}>
-        <Row gutter={16}>
-          {/* Field Name */}
-          <Col span={12}>
-            <Form.Item
-              label="Field Name"
-              name="fieldName"
-              rules={[{ required: true, message: "Please enter field name" }]}
-            >
-              <Input placeholder="Enter field name" />
-            </Form.Item>
-          </Col>
+          <Form layout="vertical" requiredMark={false}>
+            <Row gutter={16}>
+              {/* Field Name */}
+              <Col span={12}>
+                <Form.Item
+                  label="Field Name"
+                  name="fieldName"
+                  rules={[
+                    { required: true, message: "Please enter field name" },
+                  ]}
+                >
+                  <Input placeholder="Enter field name" />
+                </Form.Item>
+              </Col>
 
-          {/* Field Location */}
-          <Col span={12}>
-            <Form.Item
-              label="Field Location"
-              name="fieldLocation"
-              rules={[{ required: true, message: "Please enter field location" }]}
-            >
-              <Input placeholder="Enter field location" />
-            </Form.Item>
-          </Col>
-        </Row>
+              {/* Field Location */}
+              <Col span={12}>
+                <Form.Item
+                  label="Field Location"
+                  name="fieldLocation"
+                  rules={[
+                    { required: true, message: "Please enter field location" },
+                  ]}
+                >
+                  <Input placeholder="Enter field location" />
+                </Form.Item>
+              </Col>
+            </Row>
 
-        <Row gutter={16}>
-          {/* Extend Size */}
-          <Col span={12}>
-            <Form.Item
-              label="Extend Size"
-              name="extentSize"
-              rules={[{ required: true, message: "Please enter extend size" }]}
-            >
-              <Input placeholder="Enter extend size" />
-            </Form.Item>
-          </Col>
+            <Row gutter={16}>
+              {/* Extend Size */}
+              <Col span={12}>
+                <Form.Item
+                  label="Extend Size"
+                  name="extentSize"
+                  rules={[
+                    { required: true, message: "Please enter extend size" },
+                  ]}
+                >
+                  <Input placeholder="Enter extend size" />
+                </Form.Item>
+              </Col>
 
-          {/* Crop Image 1 */}
-          <Col span={12}>
-            <Form.Item label="Crop Image 1 (URL or File)" name="fieldImage1">
-              <Upload listType="picture" beforeUpload={() => false}>
-                <Button icon={<UploadOutlined />}>Upload</Button>
-              </Upload>
-            </Form.Item>
-          </Col>
-        </Row>
+              {/* Crop Image 1 */}
+              <Col span={12}>
+                <Form.Item
+                  label="Crop Image 1 (URL or File)"
+                  name="fieldImage1"
+                >
+                  <Upload listType="picture" beforeUpload={() => false}>
+                    <Button icon={<UploadOutlined />}>Upload</Button>
+                  </Upload>
+                </Form.Item>
+              </Col>
+            </Row>
 
-        <Row gutter={16}>
-          {/* Crop Image 2 */}
-          <Col span={12}>
-            <Form.Item label="Crop Image 2 (URL or File)" name="fieldImage2">
-              <Upload listType="picture" beforeUpload={() => false}>
-                <Button icon={<UploadOutlined />}>Upload</Button>
-              </Upload>
-            </Form.Item>
-          </Col>
+            <Row gutter={16}>
+              {/* Crop Image 2 */}
+              <Col span={12}>
+                <Form.Item
+                  label="Crop Image 2 (URL or File)"
+                  name="fieldImage2"
+                >
+                  <Upload listType="picture" beforeUpload={() => false}>
+                    <Button icon={<UploadOutlined />}>Upload</Button>
+                  </Upload>
+                </Form.Item>
+              </Col>
 
-          {/* Staff List Dropdown */}
-          <Col span={12}>
-            <Form.Item label="Select Staff" name="staffList">
-              <Select placeholder="Select staff">
-                <Option value="staff1">Staff 1</Option>
-                <Option value="staff2">Staff 2</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
+              {/* Staff List Dropdown */}
+              <Col span={12}>
+                <Form.Item label="Select Staff" name="staffList">
+                  <Select placeholder="Select staff">
+                    <Option value="staff1">Staff 1</Option>
+                    <Option value="staff2">Staff 2</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+            </Row>
 
-        <Row gutter={16}>
-          {/* Crop List Dropdown */}
-          <Col span={12}>
-            <Form.Item label="Select Crop" name="cropList">
-              <Select placeholder="Select crop">
-                <Option value="crop1">Crop 1</Option>
-                <Option value="crop2">Crop 2</Option>
-              </Select>
-            </Form.Item>
-          </Col>
+            <Row gutter={16}>
+              {/* Crop List Dropdown */}
+              <Col span={12}>
+                <Form.Item label="Select Crop" name="cropList">
+                  <Select placeholder="Select crop">
+                    <Option value="crop1">Crop 1</Option>
+                    <Option value="crop2">Crop 2</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
 
-          {/* Equipment List Dropdown */}
-          <Col span={12}>
-            <Form.Item label="Select Equipment" name="equipmentList">
-              <Select placeholder="Select equipment">
-                <Option value="equipment1">Equipment 1</Option>
-                <Option value="equipment2">Equipment 2</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-      </Form>
+              {/* Equipment List Dropdown */}
+              <Col span={12}>
+                <Form.Item label="Select Equipment" name="equipmentList">
+                  <Select placeholder="Select equipment">
+                    <Option value="equipment1">Equipment 1</Option>
+                    <Option value="equipment2">Equipment 2</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
         </Modal>
       </div>
       <div>
-      <Card
-        title=""
-        bordered={true}
-        cover={<img  style={{ height: 200, objectFit: 'cover' }} />}
-        style={{ margin: '20px', width: 300 }}
-      >
-        <p><strong>ID:</strong> {}</p>
-        <p><strong>Scientific Name:</strong> </p>
-        <p><strong>Category:</strong> </p>
-        <p><strong>Season:</strong></p>
+        <Card
+          title=""
+          bordered={true}
+          cover={<img style={{ height: 200, objectFit: "cover" }} />}
+          style={{ margin: "20px", width: 300 }}
+        >
+          <p>
+            <strong>ID:</strong> {}
+          </p>
+          <p>
+            <strong>Scientific Name:</strong>{" "}
+          </p>
+          <p>
+            <strong>Category:</strong>{" "}
+          </p>
+          <p>
+            <strong>Season:</strong>
+          </p>
 
-        <p><strong>Fields:</strong></p>
-        <Row gutter={[8, 8]}>
+          <p>
+            <strong>Fields:</strong>
+          </p>
+          <Row gutter={[8, 8]}>
             <Col>
               <Tag>{}</Tag>
             </Col>
-        </Row>
-      </Card>
+          </Row>
+        </Card>
       </div>
     </>
   );

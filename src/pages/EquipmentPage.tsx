@@ -1,22 +1,36 @@
 import { Button, Modal, Row, Col, Form, Input, Select, Table } from "antd";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addEquipment } from "../slice/EquipmentSlice";
+import EquipmentModel from "../model/EquipmentModel";
 
 const { Option } = Select;
-
-const [equipmentName,setEquipmentName] = useState("");
-const [type,setType] = useState("");
-const [status,setStatus] = useState("");
-const [availableCount,setAvalibleCount] = useState("");
-const [staffList,setStaffList] = useState([]);
-const [filedList,setFieldList] = useState([]);
-
-
 
 export function Equipmentpage() {
   // Modal state and handlers
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [title, setTitle] = useState("");
+
+  const [equipmentName, setEquipmentName] = useState("");
+  const [type, setType] = useState("");
+  const [status, setStatus] = useState("");
+  const [avalibleCount,setAvalibleCount] = ("");
+  const [staffList, setStaffList] = useState([]);
+  const [fieldList,setFieldList] = useState([]);
+
+
+  const dispatch = useDispatch();
+
+  const newEquipment:EquipmentModel={
+    equipmentId:"E1",
+    equipmentName,
+    type,
+    status,
+    avalibleCount,
+    staffList,
+    fieldList
+  }
 
   // Modal Handlers
   const openAddModal = () => {
@@ -31,6 +45,7 @@ export function Equipmentpage() {
       setOpen(false);
       setConfirmLoading(false);
     }, 1000);
+    dispatch(addEquipment(newEquipment));
   };
 
   const handleCancel = () => {
@@ -51,7 +66,7 @@ export function Equipmentpage() {
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
         >
-          <Form layout="vertical" requiredMark={false}> 
+          <Form layout="vertical" requiredMark={false}>
             <Row gutter={16}>
               {/* Equipment Name */}
               <Col span={12}>
@@ -152,15 +167,6 @@ export function Equipmentpage() {
                 </Form.Item>
               </Col>
             </Row>
-
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Save Equipment Details
-              </Button>
-              <Button style={{ marginLeft: "10px" }} onClick={handleCancel}>
-                Close
-              </Button>
-            </Form.Item>
           </Form>
         </Modal>
       </div>

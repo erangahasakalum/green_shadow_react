@@ -8,14 +8,13 @@ import {
   Select,
   Upload,
   Card,
-  Tag
+  Tag,
 } from "antd";
 import { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { addCrop } from "../slice/CropSlice";
 import CropModel from "../model/CropModel";
-
 
 export function CropPage() {
   const { Option } = Select;
@@ -33,16 +32,15 @@ export function CropPage() {
   const [fieldList, setFieldList] = useState([]);
   const [cropImage, setCropImage] = useState<File | null>(null);
 
-  const newCrop:CropModel = {
-    cropId:"C1",
+  const newCrop: CropModel = {
+    cropId: "C1",
     cropName,
     scientificName,
     cropCategory,
     cropSeason,
     fieldList,
-    cropImage:cropImage ? URL.createObjectURL(cropImage) : ""
-  }
-  
+    cropImage: cropImage ? URL.createObjectURL(cropImage) : "",
+  };
 
   const dispatch = useDispatch();
   // Modal Handlers
@@ -57,7 +55,7 @@ export function CropPage() {
       setOpen(false);
       setConfirmLoading(false);
     }, 1000);
-    dispatch(addCrop(newCrop))
+    dispatch(addCrop(newCrop));
   };
 
   const handleCancel = () => {
@@ -68,7 +66,11 @@ export function CropPage() {
     <>
       <div>
         <h1>Crops Details</h1>
-        <Button type="primary" onClick={openAddModal} className="">
+        <Button
+          type="primary"
+          onClick={openAddModal}
+          className="position: relative left-1.5"
+        >
           Add Crop
         </Button>
         <Modal
@@ -160,7 +162,12 @@ export function CropPage() {
                   <Button type="primary" style={{ marginBottom: "10px" }}>
                     Add Fields
                   </Button>
-                  <Select placeholder="Select Field" value={fieldList} >
+                  <Select
+                    placeholder="Select Field"
+                    value={fieldList}
+                    mode="multiple"
+                    onChange={(value) => setFieldList(value)}
+                  >
                     <Option value="field1">Field 1</Option>
                     <Option value="field2">Field 2</Option>
                   </Select>
@@ -170,7 +177,15 @@ export function CropPage() {
               {/* Crops & Image Upload */}
               <Col span={12}>
                 <Form.Item label="Crop Image (URL or File)">
-                  <Upload name="file" listType="picture" maxCount={1}>
+                  <Upload
+                    name="file"
+                    listType="picture"
+                    maxCount={1}
+                    beforeUpload={(file) => {
+                      setCropImage(file); // Update cropImage state
+                      return false; // Prevent automatic upload
+                    }}
+                  >
                     <Button icon={<UploadOutlined />}>Upload (File)</Button>
                   </Upload>
                 </Form.Item>
@@ -182,25 +197,35 @@ export function CropPage() {
 
       <div>
         <Card
-        title=""
-        bordered={true}
-        cover={<img  style={{ height: 200, objectFit: 'cover' }} />}
-        style={{ margin: '20px', width: 300 }}
-      >
-        <p><strong>ID:</strong> {}</p>
-        <p><strong>Scientific Name:</strong> {scientificName}</p>
-        <p><strong>Category:</strong> {cropCategory}</p>
-        <p><strong>Season:</strong> {cropSeason}</p>
+          title=""
+          bordered={true}
+          cover={<img style={{ height: 200, objectFit: "cover" }} />}
+          style={{ margin: "20px", width: 300 }}
+        >
+          <p>
+            <strong>ID:</strong> {}
+          </p>
+          <p>
+            <strong>Scientific Name:</strong> {scientificName}
+          </p>
+          <p>
+            <strong>Category:</strong> {cropCategory}
+          </p>
+          <p>
+            <strong>Season:</strong> {cropSeason}
+          </p>
 
-        <p><strong>Fields:</strong></p>
-        <Row gutter={[8, 8]}>
-          {fieldList.map((field, index) => (
-            <Col key={index}>
-              <Tag>{field}</Tag>
-            </Col>
-          ))}
-        </Row>
-      </Card>
+          <p>
+            <strong>Fields:</strong>
+          </p>
+          <Row gutter={[8, 8]}>
+            {fieldList.map((field, index) => (
+              <Col key={index}>
+                <Tag>{field}</Tag>
+              </Col>
+            ))}
+          </Row>
+        </Card>
       </div>
     </>
   );

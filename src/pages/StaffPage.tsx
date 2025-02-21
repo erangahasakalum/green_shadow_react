@@ -1,6 +1,15 @@
 import { useState } from "react";
-import { Button, Modal, Form, Input, Select, DatePicker, Row, Col, Table } from "antd";
-
+import {
+  Button,
+  Modal,
+  Form,
+  Input,
+  Select,
+  DatePicker,
+  Row,
+  Col,
+  Table,
+} from "antd";
 
 const { Option } = Select;
 
@@ -9,6 +18,16 @@ export function StaffPage() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [title, setTitle] = useState("");
 
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [gender, setGender] = useState("");
+  const [joinedDate, setJoinedDate] = useState("");
+  const [dob, setDob] = useState("");
+  const [addressLine01, setAddressLine01] = useState("");
+  const [addressLine02, setAddressLine02] = useState("");
+  const [addressLine03, setAddressLine03] = useState("");
+  const [addressLine04, setAddressLine04] = useState("");
   // Modal Handlers
   const openAddModal = () => {
     setTitle("Add New Staff");
@@ -49,7 +68,12 @@ export function StaffPage() {
                 <Form.Item
                   label="First Name"
                   name="firstName"
-                  rules={[{ required: true, message: "Please input your first name!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your first name!",
+                    },
+                  ]}
                 >
                   <Input placeholder="First Name" />
                 </Form.Item>
@@ -58,7 +82,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Last Name"
                   name="lastName"
-                  rules={[{ required: true, message: "Please input your last name!" }]}
+                  rules={[
+                    { required: true, message: "Please input your last name!" },
+                  ]}
                 >
                   <Input placeholder="Last Name" />
                 </Form.Item>
@@ -70,11 +96,18 @@ export function StaffPage() {
                 <Form.Item
                   label="Designation"
                   name="designation"
-                  rules={[{ required: true, message: "Please select your designation!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please select your designation!",
+                    },
+                  ]}
                 >
                   <Select placeholder="Select Designation">
                     <Option value="MANAGER">Manager</Option>
-                    <Option value="SENIOR_ASSISTANT_MANAGER">Senior Assistant Manager</Option>
+                    <Option value="SENIOR_ASSISTANT_MANAGER">
+                      Senior Assistant Manager
+                    </Option>
                     <Option value="ASSISTANT_MANAGER">Assistant Manager</Option>
                     <Option value="ADMIN_HR_STAFF">Admin HR Staff</Option>
                     <Option value="OFFICE_ASSISTANT">Office Assistant</Option>
@@ -91,7 +124,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Gender"
                   name="gender"
-                  rules={[{ required: true, message: "Please select your gender!" }]}
+                  rules={[
+                    { required: true, message: "Please select your gender!" },
+                  ]}
                 >
                   <Select placeholder="Select Gender">
                     <Option value="MALE">Male</Option>
@@ -106,18 +141,36 @@ export function StaffPage() {
                 <Form.Item
                   label="Joined Date"
                   name="joinedDate"
-                  rules={[{ required: true, message: "Please select your joined date!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please select your joined date!",
+                    },
+                  ]}
                 >
-                  <DatePicker style={{ width: "100%" }} placeholder="Select Joined Date" format="YYYY-MM-DD" />
+                  <DatePicker
+                    style={{ width: "100%" }}
+                    placeholder="Select Joined Date"
+                    format="YYYY-MM-DD"
+                  />
                 </Form.Item>
               </Col>
               <Col span={12}>
                 <Form.Item
                   label="Date of Birth"
                   name="dob"
-                  rules={[{ required: true, message: "Please select your date of birth!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please select your date of birth!",
+                    },
+                  ]}
                 >
-                  <DatePicker style={{ width: "100%" }} placeholder="Select Date of Birth" format="YYYY-MM-DD" />
+                  <DatePicker
+                    style={{ width: "100%" }}
+                    placeholder="Select Date of Birth"
+                    format="YYYY-MM-DD"
+                  />
                 </Form.Item>
               </Col>
             </Row>
@@ -127,7 +180,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Address Line 1"
                   name="addressLine01"
-                  rules={[{ required: true, message: "Please input address line 1!" }]}
+                  rules={[
+                    { required: true, message: "Please input address line 1!" },
+                  ]}
                 >
                   <Input placeholder="Building No." />
                 </Form.Item>
@@ -136,7 +191,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Address Line 2"
                   name="addressLine02"
-                  rules={[{ required: true, message: "Please input address line 2!" }]}
+                  rules={[
+                    { required: true, message: "Please input address line 2!" },
+                  ]}
                 >
                   <Input placeholder="Lane" />
                 </Form.Item>
@@ -148,7 +205,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Address Line 3"
                   name="addressLine03"
-                  rules={[{ required: true, message: "Please input address line 3!" }]}
+                  rules={[
+                    { required: true, message: "Please input address line 3!" },
+                  ]}
                 >
                   <Input placeholder="Main City" />
                 </Form.Item>
@@ -157,7 +216,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Address Line 4"
                   name="addressLine04"
-                  rules={[{ required: true, message: "Please input address line 4!" }]}
+                  rules={[
+                    { required: true, message: "Please input address line 4!" },
+                  ]}
                 >
                   <Input placeholder="Main State" />
                 </Form.Item>
@@ -169,7 +230,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Postal Code"
                   name="postalCode"
-                  rules={[{ required: true, message: "Please input postal code!" }]}
+                  rules={[
+                    { required: true, message: "Please input postal code!" },
+                  ]}
                 >
                   <Input placeholder="Postal Code" />
                 </Form.Item>
@@ -178,7 +241,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Contact No"
                   name="contactNo"
-                  rules={[{ required: true, message: "Please input contact number!" }]}
+                  rules={[
+                    { required: true, message: "Please input contact number!" },
+                  ]}
                 >
                   <Input placeholder="Mobile number" />
                 </Form.Item>
@@ -190,7 +255,13 @@ export function StaffPage() {
                 <Form.Item
                   label="Email"
                   name="emailStaff"
-                  rules={[{ required: true, type: "email", message: "Please input a valid email!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      type: "email",
+                      message: "Please input a valid email!",
+                    },
+                  ]}
                 >
                   <Input placeholder="Email address" />
                 </Form.Item>
@@ -199,7 +270,9 @@ export function StaffPage() {
                 <Form.Item
                   label="Role"
                   name="roleStaff"
-                  rules={[{ required: true, message: "Please select your role!" }]}
+                  rules={[
+                    { required: true, message: "Please select your role!" },
+                  ]}
                 >
                   <Select placeholder="Select Role">
                     <Option value="MANAGER">Manager</Option>
@@ -215,7 +288,7 @@ export function StaffPage() {
       </div>
 
       <div>
-        <Table/>  
+        <Table />
       </div>
     </>
   );

@@ -9,6 +9,14 @@ export function VehiclePage() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [title, setTitle] = useState("");
 
+
+  const[licensePlateNumber,setLicencePlateNumber] = useState("");
+  const[vehicleName,setVehicleName] = useState("");
+  const[category,setCategory] = useState("");
+  const[fuelType,setFualType] = useState("");
+  const[status,setStates] = useState("");
+  const[staffId,setStaffId] = useState("");
+
   // Modal Handlers
   const openAddModal = () => {
     setTitle("Add New Vehicle");
