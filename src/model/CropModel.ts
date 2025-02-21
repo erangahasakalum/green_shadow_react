@@ -5,9 +5,9 @@ class CropModel{
     cropCategory:string;
     cropSeason:string;
     fieldList:string[];
-    cropImage:File|null;
+    cropImage:string
     
-    constructor(cropId:string,cropName:string,scientificName:string,cropCategory:string,cropSeason:string,fieldList:string[],cropImage:File|null){
+    constructor(cropId:string,cropName:string,scientificName:string,cropCategory:string,cropSeason:string,fieldList:string[],cropImage:string){
         this.cropId = cropId;
         this.cropName = cropName;
         this.scientificName = scientificName;

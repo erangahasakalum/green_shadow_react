@@ -1,4 +1,4 @@
-import { Button, Modal, Row, Col, Form, Input, Select, Upload, Table } from "antd";
+import { Button, Modal, Row, Col, Form, Input, Select, Upload, Card,Tag } from "antd";
 import { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 
@@ -140,7 +140,24 @@ export function FieldPage() {
         </Modal>
       </div>
       <div>
-        <Table/>
+      <Card
+        title=""
+        bordered={true}
+        cover={<img  style={{ height: 200, objectFit: 'cover' }} />}
+        style={{ margin: '20px', width: 300 }}
+      >
+        <p><strong>ID:</strong> {}</p>
+        <p><strong>Scientific Name:</strong> </p>
+        <p><strong>Category:</strong> </p>
+        <p><strong>Season:</strong></p>
+
+        <p><strong>Fields:</strong></p>
+        <Row gutter={[8, 8]}>
+            <Col>
+              <Tag>{}</Tag>
+            </Col>
+        </Row>
+      </Card>
       </div>
     </>
   );

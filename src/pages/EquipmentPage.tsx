@@ -3,6 +3,15 @@ import { useState } from "react";
 
 const { Option } = Select;
 
+const [equipmentName,setEquipmentName] = useState("");
+const [type,setType] = useState("");
+const [status,setStatus] = useState("");
+const [availableCount,setAvalibleCount] = useState("");
+const [staffList,setStaffList] = useState([]);
+const [filedList,setFieldList] = useState([]);
+
+
+
 export function Equipmentpage() {
   // Modal state and handlers
   const [open, setOpen] = useState(false);
@@ -42,7 +51,7 @@ export function Equipmentpage() {
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
         >
-          <Form layout="vertical">
+          <Form layout="vertical" requiredMark={false}> 
             <Row gutter={16}>
               {/* Equipment Name */}
               <Col span={12}>

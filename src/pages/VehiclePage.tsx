@@ -42,7 +42,7 @@ export function VehiclePage() {
           confirmLoading={confirmLoading}
           onCancel={handleCancel}
         >
-          <Form layout="vertical">
+          <Form layout="vertical" requiredMark={false}>
             <Row gutter={16}>
               <Col span={12}>
                 <Form.Item
